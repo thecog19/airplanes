@@ -30,4 +30,4 @@ After clicking boot, the html page should have:
 
 In the database the attibutes (size, type) are stored as strings rather than bools with the assumption that the AC types and sizes might be expanded on in a future iteration of the application, despite the minor preformance hit
 
-Also of note is the use of a priority system to 
+Also of note is the use of a priority system to reduce the strain on the database when computing which planes to de-queue, this also allows for the priority system to be updated more easally. 
