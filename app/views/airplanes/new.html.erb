@@ -1,1 +1,6 @@
-<h1> Test! </h1>
+<%= form_for Airplane.new do |f| %>
+  Name: <%= f.text_field :name %>
+  Size : <%= f.select :size, ["large", "small"] %>
+  Cargo Type : <%= f.select :cargo_type, ["passenger", "cargo"]%>
+  <%= f.submit %>
+<% end %>
