@@ -1,6 +1,36 @@
+<br>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-4">
+    <h2>Aircraft Control Center</h2>
+  </div>
+</div>
+
 <%= form_for Airplane.new do |f| %>
-  Name: <%= f.text_field :name %>
-  Size : <%= f.select :size, ["large", "small"] %>
-  Cargo Type : <%= f.select :cargo_type, ["passenger", "cargo"]%>
-  <%= f.submit %>
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label" for="name">Name:</label>
+    <div class="col-sm-11">
+      <%= f.text_field :name, {class: "form-control", id: "name"} %>
+    </div>
+  </div>  
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Size:</label>
+    <div class="col-sm-10">
+      <%= f.select :size, ["large", "small"],{include_blank: true}, {class: "form-control"} %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Cargo Type:</label>
+    <div class="col-sm-10">
+      <%= f.select :cargo_type, ["passenger", "cargo"], {include_blank: true}, {class: "form-control"}%>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <%= f.submit "Queue Plane", class: "btn btn-primary btn-lg" %>
+    </div>
+
+    <div class="col-sm-2">
+      <button class="btn btn-danger btn-lg"> Dequeue Plane </button>
+    </div>
+  </div>
 <% end %>
