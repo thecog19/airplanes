@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe AirplanesController, type: :controller do
   context "visiting the index page" do
-    it "renders the index"
+    it "renders the index" do 
+      get :index
+      expect(response).to render_template("index")
+    end
     it "has a list of airplanes"
   end
 

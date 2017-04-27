@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1> Welcome to the Plane Queue</h1>
+  </div> 
+  <div class="col-md-12">
+    <p> This is the order planes will dequeue in </p>
+  </div>
+</div>
+
+<div class="row">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Plane Name</th>
+        <th>ID</th>
+        <th>Cargo Type</th>
+        <th>Size</th>
+        <th>Priority</th>
+        <th>Minutes In Air</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @airplanes.each do |airplane|%>
+      <tr>
+        <td><%=airplane.name%></td>
+        <td><%=airplane.id%></td>
+        <td><%=airplane.cargo_type%></td>
+        <td><%=airplane.size%></td>
+        <td><%=airplane.priority%></td>
+        <td><%=((Time.now - airplane.created_at)/60).to_i%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="form-group row">
+  <div class="col-sm-10">
+    <%= button_to "Back To Control", new_airplane_path, {method: :get, class: "btn btn-primary"} %>
+  </div>
+</div>

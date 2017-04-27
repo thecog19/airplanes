@@ -1,6 +1,6 @@
 class AirplanesController < ApplicationController
   def index
-    @airplanes = Airplane.all
+    @airplanes = Airplane.all.order(:priority, :updated_at)
   end
 
   def new
