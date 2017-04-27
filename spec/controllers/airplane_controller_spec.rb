@@ -6,7 +6,43 @@ RSpec.describe AirplanesController, type: :controller do
       get :index
       expect(response).to render_template("index")
     end
-    it "has a list of airplanes"
+
+    it "has a list of airplanes" do 
+      plane = Airplane.create(name: "test", 
+                              cargo_type: "passenger",
+                              size: "large",
+                              priority: 1)
+      get :index
+      expect(assigns(:airplanes)).to eq([plane])
+    end
+
+    it "the planes are ordered by priority" do
+      plane = Airplane.create(name: "test", 
+                              cargo_type: "passenger",
+                              size: "large",
+                              priority: 1)
+      plane2 = Airplane.create(name: "test2", 
+                              cargo_type: "passenger",
+                              size: "small",
+                              priority: 2)
+
+      get :index
+      expect(assigns(:airplanes)).to eq([plane, plane2])
+    end
+
+    it "if priority is tied order by created_at" do
+      plane2 = Airplane.create(name: "test2", 
+                              cargo_type: "passenger",
+                              size: "large",
+                              priority: 1)
+      plane = Airplane.create(name: "test", 
+                              cargo_type: "passenger",
+                              size: "large",
+                              priority: 1)
+
+      get :index
+      expect(assigns(:airplanes)).to eq([plane2, plane])
+    end
   end
 
   context "visiting the new page" do
