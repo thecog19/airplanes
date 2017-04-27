@@ -11,7 +11,7 @@ class AirplanesController < ApplicationController
     if @airplane.valid?
       flash[:success] = "Plane added to queue"
     else
-      flash[:danger] = @airplane.errors.full_messages.first
+      flash[:danger] = @airplane.errors.full_messages.first 
     end
     redirect_to action: "new"
   end
