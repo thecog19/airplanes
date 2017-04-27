@@ -1,4 +1,4 @@
-##Problem:
+## Problem:
 
 A software subsystem of an air-traffic control system is defined to manage a queue of aircraft(AC) in an airport. The aircraft queue is managed by a process which responds to three types of requests:
 
@@ -28,7 +28,11 @@ After clicking boot, the html page should have:
 
 
 ========================
-##Notes
+
+## Notes
+
+### Database details
+The backend for this app uses postgresql
 
 In the database the attibutes (size, type) are stored as strings rather than bools with the assumption that the AC types and sizes might be expanded on in a future iteration of the application, despite the minor preformance hit
 
@@ -39,14 +43,14 @@ Small Passenger = 2
 Large Cargo = 3
 Small Cargo = 4
 
-###Potential improvements: 
+### Potential improvements: 
 The index which displays the current airplanes lacks any interactivity, it would be good to be able to reorder it, as well as dequeue from that page. That would only require a minor refactoring. 
 
 The boot button does not clear the database, as the assumption is that the system stores state between sessions. Refactoring away from that would also be fairly straightforward.
 
 There are no integration tests as of right now, but it is possible to add them with capybara. 
 
-###Testing/setup
+### Testing/setup
 
 For developement/testing there is an existing seed file, run it with rails db:seed. Guard is also included, and can be run during development by just typing "guard" in the console after setting the app up.
 
