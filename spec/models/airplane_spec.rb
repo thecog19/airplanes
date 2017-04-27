@@ -95,13 +95,15 @@ RSpec.describe Airplane, type: :model do
 
         it "deletes higher priority planes first" do
           plane.save
-          plane2 = Airplane.create(name: "red", priority: 1, cargo_type: "passenger", size: "large")
-          expect(Airplane.dequeue).to eq(plane2)
+          plane2 = Airplane.create(name: "blue", priority: 4, cargo_type: "cargo", size: "small")
+          plane3 = Airplane.create(name: "red", priority: 1, cargo_type: "passenger", size: "large")
+          expect(Airplane.dequeue).to eq(plane3)
         end
 
         it "deletes later date if priority is tied" do
           plane.save
           plane2 = Airplane.create(name: "red", priority: 3, cargo_type: "cargo", size: "large")
+          plane3 = Airplane.create(name: "blue", priority: 4, cargo_type: "cargo", size: "small")
           expect(Airplane.dequeue).to eq(plane)
         end
       end
