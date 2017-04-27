@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe AirplanesController, type: :controller do
-  context "visiting the index page" do
+  context "#index" do
     it "renders the index" do 
       get :index
       expect(response).to render_template("index")
@@ -52,7 +52,7 @@ RSpec.describe AirplanesController, type: :controller do
     end
   end
 
-  context "creating a new plane" do
+  context "#create" do
     let(:params) {{airplane: {name: "aaaa", size: "large", cargo_type: "passenger", elephant: "green"}}}
     it "accepts expected parameters" do
       post :create, params

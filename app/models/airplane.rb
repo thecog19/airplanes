@@ -21,7 +21,9 @@ class Airplane < ApplicationRecord
   end
 
   def self.dequeue
-    true
+    return false if Airplane.all.empty?
+    plane = Airplane.order(:priority, :updated_at).first
+    plane.destroy
   end
 end
  

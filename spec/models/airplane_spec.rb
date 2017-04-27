@@ -11,7 +11,6 @@ RSpec.describe Airplane, type: :model do
 
     it "for size" do
       plane.size = nil 
-      p plane
       expect(plane.valid?).to be false
     end
 
@@ -73,6 +72,26 @@ RSpec.describe Airplane, type: :model do
       it "priority for small cargo" do 
         params = {"size" => "small", "cargo_type" => "cargo"}
         expect(Airplane.calculate_priority(params)).to eq(4)
+      end
+    end 
+
+    context "#dequeue" do
+      context "there are no planes" do
+        it "returns false" do
+          expect(Airplane.dequeue).to be false
+        end
+      end
+
+      context "there are planes" do
+        it "deletes a record" do
+          plane.save
+          expect{Airplane.dequeue}.to change{Airplane.count}.by(-1)
+        end
+
+        it "returns the deleted record" do
+          plane.save
+          expect(Airplane.dequeue).to eq(plane)
+        end
       end
     end 
   end
