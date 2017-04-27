@@ -16,6 +16,16 @@ class AirplanesController < ApplicationController
     redirect_to action: "new"
   end
 
+  def destroy
+    @airplane = Airplane.dequeue
+    if @airplane
+      flash[:success] = "Airplane #{@airplane.name}, with id #{@airplane.id} was successfuly Dequeued"
+    else
+      flash[:danger] = "there were no planes to dequeue"
+    end
+    redirect_to action: "new"
+  end
+
 
   def airplane_params 
     params.require(:airplane).permit(:name, :size, :cargo_type)
