@@ -37,8 +37,8 @@ RSpec.describe Airplane, type: :model do
       }
     }
     context "invalid params" do
-      it "Returns errors if given invalid parameters" do 
-        expect(Airplane.enqueue({})).to be_a(ActiveModel::Errors)
+      it "Returns airplane record" do 
+        expect(Airplane.enqueue({})).to be_a(Airplane)
       end
     end
     context "valid params" do

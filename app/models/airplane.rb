@@ -6,7 +6,7 @@ class Airplane < ApplicationRecord
   def self.enqueue(params)
     plane = Airplane.new(params)
     plane.priority = 0 
-    return plane.errors unless plane.valid?
+    return plane unless plane.valid?
     plane.priority = calculate_priority(params)
     plane.save
     plane
