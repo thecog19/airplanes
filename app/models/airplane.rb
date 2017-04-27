@@ -5,6 +5,7 @@ class Airplane < ApplicationRecord
 
   def self.enqueue(params)
     plane = Airplane.new(params)
+    #we have to assign a placeholder priority so the validity check works
     plane.priority = 0 
     return plane unless plane.valid?
     plane.priority = calculate_priority(params)
@@ -22,6 +23,7 @@ class Airplane < ApplicationRecord
 
   def self.dequeue
     return false if Airplane.all.empty?
+    #this says grab the plane with the highest priority that was updated last chronologically
     plane = Airplane.order(:priority, :updated_at).first
     plane.destroy
   end
