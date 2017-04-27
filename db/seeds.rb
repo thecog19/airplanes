@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+TIMES = 10
+puts "clearing database"
+Airplane.destroy_all
+puts "database cleared"
+puts "creating airplanes"
+TIMES.times do 
+  Airplane.enqueue(name: Faker::StarWars.vehicle, 
+                  "size" => ["large","small"].sample,
+                  "cargo_type" => ["passenger","cargo"].sample)
+end
+puts "airplanes created"
