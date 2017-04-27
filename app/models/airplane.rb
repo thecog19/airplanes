@@ -14,7 +14,10 @@ class Airplane < ApplicationRecord
 
   def self.calculate_priority(params)
     #the lower the number the sooner the plane is dequeued. 
-    4
+    priority = 1
+    priority += 2 if params["cargo_type"] == "cargo"
+    priority += 1 if params["size"] == "small"
+    priority
   end
 end
  

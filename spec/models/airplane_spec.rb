@@ -54,10 +54,26 @@ RSpec.describe Airplane, type: :model do
     end
 
     context "#calculate priority" do 
-      it "priority 1 if"
-      it "priority 2 if"
-      it "priority 3 if"
-      it "priority 4 if"
+
+      it "priority for big passenger" do
+        params = {"size" => "big", "cargo_type" => "passenger"}
+        expect(Airplane.calculate_priority(params)).to eq(1)
+      end
+      
+      it "priority for small passenger" do
+       params = {"size" => "small", "cargo_type" => "passenger"}
+        expect(Airplane.calculate_priority(params)).to eq(2)
+      end
+
+      it "priority for big cargo" do 
+        params = {"size" => "big", "cargo_type" => "cargo"}
+        expect(Airplane.calculate_priority(params)).to eq(3)
+      end
+      
+      it "priority for small cargo" do 
+        params = {"size" => "small", "cargo_type" => "cargo"}
+        expect(Airplane.calculate_priority(params)).to eq(4)
+      end
     end 
   end
 end
