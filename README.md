@@ -35,10 +35,10 @@ In the database the attibutes (size, type) are stored as strings rather than boo
 
 Also of note is the use of a priority system to reduce the strain on the database when computing which planes to de-queue, this also allows for the priority system to be updated more easally. Currently priorities look like this
 
-Large Passenger = 1
-Small Passenger = 2
-Large Cargo = 3
-Small Cargo = 4
+- Large Passenger = 1
+- Small Passenger = 2
+- Large Cargo = 3
+- Small Cargo = 4
 
 ### Potential improvements: 
 The index which displays the current airplanes lacks any interactivity, it would be good to be able to reorder it, as well as dequeue from that page. That would only require a minor refactoring. 
