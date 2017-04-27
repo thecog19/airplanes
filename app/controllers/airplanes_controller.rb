@@ -16,6 +16,7 @@ class AirplanesController < ApplicationController
     redirect_to action: "new"
   end
 
+
   def airplane_params 
     params.require(:airplane).permit(:name, :size, :cargo_type)
   end
