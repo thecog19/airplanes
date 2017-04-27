@@ -26,9 +26,6 @@ After clicking boot, the html page should have:
 - a button to dequeue aircraft (when pressed a message should appear stating which aircraft was dequeued)
 - there should be a tab or link to take the user to another view that shows the current state of the enqueued airplanes.
 
-
-========================
-
 ## Notes
 
 ### Database details
