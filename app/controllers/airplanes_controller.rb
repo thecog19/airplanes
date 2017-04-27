@@ -19,7 +19,7 @@ class AirplanesController < ApplicationController
   def destroy
     @airplane = Airplane.dequeue
     if @airplane
-      flash[:success] = "Airplane #{@airplane.name}, with id #{@airplane.id} was successfuly Dequeued"
+      flash[:success] = "Airplane #{@airplane[:name]}, with id #{@airplane[:id]} was successfuly Dequeued"
     else
       flash[:danger] = "there were no planes to dequeue"
     end

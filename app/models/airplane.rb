@@ -19,5 +19,9 @@ class Airplane < ApplicationRecord
     priority += 1 if params["size"] == "small"
     priority
   end
+
+  def self.dequeue
+    true
+  end
 end
  

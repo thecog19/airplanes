@@ -93,4 +93,44 @@ RSpec.describe AirplanesController, type: :controller do
       expect(response).to_not redirect_to(airplanes_path)
     end
   end
+
+  context "#destroy" do
+    let(:plane) {{name: "aaaa", id: 4}}
+    it "calls the dequeue method on Airplane" do
+      expect(Airplane).to receive(:dequeue).and_return(plane)
+      delete :destroy, id: 1 
+    end
+
+    context "no planes left" do
+      it "redirects to new" do 
+        allow(Airplane).to receive(:dequeue).and_return(false)
+        delete :destroy, id: 1  
+        expect(response).to redirect_to(new_airplane_path) 
+        expect(response).to_not redirect_to(airplanes_path)
+      end
+
+      it "sets a failure flash" do
+        allow(Airplane).to receive(:dequeue).and_return(false)
+        delete :destroy, id: 1  
+        expect( subject.request.flash[:danger] ).to_not be_nil
+      end
+    end
+
+    context "there are planes in the queue" do 
+      it "redirects to new" do 
+        allow(Airplane).to receive(:dequeue).and_return(plane)
+        delete :destroy, id: 1  
+        expect(response).to redirect_to(new_airplane_path) 
+        expect(response).to_not redirect_to(airplanes_path)
+      end
+
+      it "sets a success flash" do
+        allow(Airplane).to receive(:dequeue).and_return(plane)
+        delete :destroy, id: 1  
+        expect( subject.request.flash[:success] ).to_not be_nil
+      end
+      
+
+    end
+  end
 end
